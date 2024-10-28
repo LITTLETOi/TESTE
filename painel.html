@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gerar Logins</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2b2b2b;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        #generatedLogins {
+            margin-top: 20px;
+            text-align: left;
+            width: 200px;
+            height: 150px;
+            overflow-y: auto;
+            background-color: #2b2b2b;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Painel de Gerar Logins</h1>
+        <input type="text" id="newUsername" placeholder="Nome de Usuário" required>
+        <input type="password" id="newPassword" placeholder="Senha" required>
+        <button onclick="generateLogin()">Gerar Login</button>
+        
+        <h2>Logins Gerados</h2>
+        <textarea id="generatedLogins" readonly></textarea>
+        <footer>HELL MODS®</footer>
+    </div>
+
+    <script>
+        function generateLogin() {
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+
+            // Aqui você pode adicionar lógica para garantir que os logins sejam únicos ou armazená-los de outra forma
+            const output = document.getElementById('generatedLogins');
+            output.value += `Usuário: ${username}, Senha: ${password}\n`;
+            
+            // Limpar campos de entrada
+            document.getElementById('newUsername').value = '';
+            document.getElementById('newPassword').value = '';
+        }
+    </script>
+</body>
+</html>
