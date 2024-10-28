@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Códigos - HELL MODS</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            text-align: center;
+            background-color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #444;
+            color: #ffffff;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .output-box textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #444;
+            color: #ffffff;
+            resize: none;
+            outline: none;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .footer { position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quantos códigos você gostaria de gerar?</h1>
+        <div class="input-box">
+            <input type="number" id="quantity" placeholder="Digite a quantidade" min="1" />
+        </div>
+        <div class="output-box">
+            <textarea id="codes" placeholder="Os códigos gerados aparecerão aqui..." readonly></textarea>
+        </div>
+        <button class="btn" onclick="generateCodes()">Gerar Códigos</button>
+    </div>
+    <div class="footer">HELL MODS®</div>
+
+    <script>
+        function generateCodes() {
+            const quantity = document.getElementById('quantity').value;
+            const output = document.getElementById('codes');
+            const caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            const tamanho = 10;
+            let codigos = [];
+
+            for (let i = 0; i < quantity; i++) {
+                let codigo = '';
+                for (let j = 0; j < tamanho; j++) {
+                    const indice = Math.floor(Math.random() * caracteres.length);
+                    codigo += caracteres.charAt(indice);
+                }
+                codigos.push(`https://www.spotify.com/br-pt/ppt/microsoft/?code=${codigo}`);
+            }
+
+            output.value = codigos.join('\n');
+        }
+    </script>
+</body>
+</html>
