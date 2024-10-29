@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HELL MODS LOGIN</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2b2b2b;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HELL MODS LOGIN</h1>
+        <input type="text" id="username" placeholder="Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button onclick="login()">Login</button>
+        <footer>HELL MODS®</footer>
+    </div>
+
+    <script>
+        const validUsername = "DONO1";
+        const validPassword = "18060988";
+        const expirationDate = new Date('2024-11-05'); // Data de expiração do login (daqui uma semana)
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === validUsername && password === validPassword) {
+                const today = new Date();
+                const timeDiff = expirationDate - today;
+                const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                if (daysLeft > 0) {
+                    alert(`Login bem-sucedido! Faltam ${daysLeft} dias para o acesso expirar.`);
+                    window.location.href = 'gerador.html'; // Redireciona para o gerador de códigos
+                } else {
+                    alert("O acesso expirou!");
+                }
+            } else {
+                alert("Usuário ou senha inválidos.");
+            }
+        }
+    </script>
+</body>
+</html>
